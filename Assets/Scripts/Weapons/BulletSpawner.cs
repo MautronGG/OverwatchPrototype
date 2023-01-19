@@ -5,12 +5,25 @@ using UnityEngine.InputSystem;
 public class BulletSpawner : MonoBehaviour
 {
     public GameObject bullet;
-    public void OnShooting(InputAction.CallbackContext context)
+    InputManager m_input;
+
+    void Start()
     {
-        if (!context.ReadValueAsButton())
+        m_input = SystemManager.m_instance.m_inputs;
+
+    }
+    void Update()
+    {
+        if (m_input.m_shooting)
         {
-            return;
+            Shoot();
+            m_input.m_shooting = false;
         }
-        Instantiate(bullet);
+    }
+
+    void Shoot()
+    {
+        Debug.Log("Shoot");
+        Instantiate(bullet,transform.position,Quaternion.identity);
     }
 }

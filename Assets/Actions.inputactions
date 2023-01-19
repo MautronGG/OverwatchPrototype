@@ -54,17 +54,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "30bf32cb-f8ec-474d-ab31-a080064059c1",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shooting",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "e3999d8f-a70f-4ab5-8fbb-c0234738d698",
                     "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
@@ -148,6 +137,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CameraMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "174bddfd-3ca0-45ec-9d7e-1fef23faaa81",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shooting",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

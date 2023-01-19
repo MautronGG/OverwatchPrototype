@@ -6,16 +6,15 @@ using UnityEngine.InputSystem;
 public class CameraMovement : MonoBehaviour
 {
     public float walkSpeed = 10f;
-    
-    Vector2 movementInput;
     Rigidbody m_rigidbody;
-
+    InputManager m_input;
     
     //public Vector3 rotate = new Vector3(1f,0f,0f); 
     // Start is called before the first frame update
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody>();
+        m_input = SystemManager.m_instance.m_inputs;
     }
 
     // Update is called once per frame
@@ -27,11 +26,7 @@ public class CameraMovement : MonoBehaviour
     }
     void Moving()
     {
-        Vector3 playerVelocity = new Vector3(movementInput.x * walkSpeed, m_rigidbody.velocity.y, movementInput.y * walkSpeed);
+        Vector3 playerVelocity = new Vector3(m_input.m_movementInput.x * walkSpeed, m_rigidbody.velocity.y, m_input.m_movementInput.y * walkSpeed);
         m_rigidbody.velocity = transform.TransformDirection(playerVelocity);
-    }
-    void OnMovement(InputValue value)
-    {
-        movementInput = value.Get<Vector2>();
     }
 }
