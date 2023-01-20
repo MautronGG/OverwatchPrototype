@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class BulletSpawner : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject m_bullet;
     InputManager m_input;
 
     void Start()
@@ -14,16 +14,26 @@ public class BulletSpawner : MonoBehaviour
     }
     void Update()
     {
+        //if (m_input.m_shooting)
+
+        m_input.m_shooting = InputManager.onShoot();
         if (m_input.m_shooting)
         {
             Shoot();
-            m_input.m_shooting = false;
         }
+        //if (InputManager.onShootRPressed())
+        //{
+        //    Shoot();
+        //    m_input.m_shooting = false;
+        //    InputManager.onShootRelased();
+        //}
     }
 
     void Shoot()
     {
         Debug.Log("Shoot");
-        Instantiate(bullet,transform.position,Quaternion.identity);
+        var bullet = Instantiate(m_bullet,transform.position,Quaternion.identity).GetComponent<Bullet>();
+        bullet.SetDirection(Camera.main.transform.forward);
+        bullet.ShootBullet();
     }
 }
