@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
             m_rigidBody = GetComponent<Rigidbody>();
         }
         m_myVector *= m_speed;
-        m_rigidBody.AddForce(m_myVector, ForceMode.Impulse);
+        m_rigidBody.AddForce(m_myVector * 15f, ForceMode.Impulse);
         m_time = 0f;
     }
 }

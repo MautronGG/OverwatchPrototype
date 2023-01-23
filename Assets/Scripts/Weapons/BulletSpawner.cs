@@ -6,7 +6,7 @@ public class BulletSpawner : MonoBehaviour
 {
     public GameObject m_bullet;
     InputManager m_input;
-
+    float m_firerate = 0f;
     void Start()
     {
         m_input = SystemManager.m_instance.m_inputs;
@@ -15,11 +15,12 @@ public class BulletSpawner : MonoBehaviour
     void Update()
     {
         //if (m_input.m_shooting)
-
+        m_firerate += Time.deltaTime;
         m_input.m_shooting = InputManager.onShoot();
-        if (m_input.m_shooting)
+        if (m_input.m_shooting && m_firerate >= 0.10f)
         {
             Shoot();
+            m_firerate = 0f;
         }
         //if (InputManager.onShootRPressed())
         //{
