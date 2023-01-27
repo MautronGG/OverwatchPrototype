@@ -7,6 +7,7 @@ public class BulletSpawner : MonoBehaviour
     public GameObject m_bullet;
     InputManager m_input;
     float m_firerate = 0f;
+    public float m_centerPoint = 10f;
     void Start()
     {
         m_input = SystemManager.m_instance.m_inputs;
@@ -34,7 +35,20 @@ public class BulletSpawner : MonoBehaviour
     {
         Debug.Log("Shoot");
         var bullet = Instantiate(m_bullet,transform.position,Quaternion.identity).GetComponent<Bullet>();
-        bullet.SetDirection(Camera.main.transform.forward);
+        //RaycastHit myRaycast;
+        //Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);    
+        //if (Physics.Raycast(myRay,out myRaycast))
+        //{
+        //    Transform myObject = myRaycast.transform;
+        //    bullet.SetDirection((myRaycast.point - transform.position).normalized);
+        //}
+        //else
+        //{
+        //    //bullet.SetDirection(Camera.main.transform.forward);
+        //    bullet.SetDirection(((Camera.main.transform.position+(Camera.main.transform.forward * m_centerPoint))- transform.position).normalized);
+        //}
+        bullet.SetDirection(((Camera.main.transform.position + (Camera.main.transform.forward * m_centerPoint)) - transform.position).normalized);
+
         bullet.ShootBullet();
     }
 }

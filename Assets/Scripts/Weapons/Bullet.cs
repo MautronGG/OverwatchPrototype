@@ -26,6 +26,18 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Enemy");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Enemy");
+        }
     }
 
     public void SetDirection(Vector3 vector)
@@ -39,7 +51,7 @@ public class Bullet : MonoBehaviour
             m_rigidBody = GetComponent<Rigidbody>();
         }
         m_myVector *= m_speed;
-        m_rigidBody.AddForce(m_myVector * 15f, ForceMode.Impulse);
+        m_rigidBody.AddForce(m_myVector * 8f, ForceMode.Impulse);
         m_time = 0f;
     }
 }
