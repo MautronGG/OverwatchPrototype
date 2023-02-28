@@ -11,7 +11,16 @@ public class InputManager : MonoBehaviour
     static bool m_shooting2;
     public bool m_crouching;
     public bool m_jumping;
+    public bool m_isPause;
+    public bool m_pausing = false;
     static PlayerInput m_playerInput;
+    GameObject m_pauseCanvas;
+
+    private void Awake()
+    {
+        m_pauseCanvas = GameObject.FindGameObjectWithTag("Pause");
+        m_pauseCanvas.SetActive(false);
+    }
     private void Start()
     {
         m_playerInput = GetComponent<PlayerInput>();
@@ -37,6 +46,10 @@ public class InputManager : MonoBehaviour
     {
         m_jumping = value.isPressed;
     }
+    public void OnPause(InputValue value)
+    {
+        m_isPause = value.isPressed;
+    }
 
     static public bool onShootRelased()
     {
@@ -61,7 +74,21 @@ public class InputManager : MonoBehaviour
         }
         return m_shooting2;
     }
+    void Update()
+    {
+        Pausing();
+    }
+    private void Pausing()
+    {
+        if (m_isPause)
+        {
+            m_pausing = true;
+            Time.timeScale = 0f;
+            m_pauseCanvas.SetActive(true);
+        }
+    }
 }
+
 
 
 

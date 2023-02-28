@@ -20,11 +20,17 @@ public class SystemManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+            Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (m_inputs.m_pausing)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
+
+   
