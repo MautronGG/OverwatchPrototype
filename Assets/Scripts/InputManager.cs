@@ -34,10 +34,7 @@ public class InputManager : MonoBehaviour
     {
         m_looking = value.Get<Vector2>();
     }
-    public void OnShooting(InputValue value)
-    {
-        //m_shooting = value.isPressed;
-    }
+
     public void OnCrouching(InputValue value)
     {
         m_crouching = value.isPressed;
@@ -51,29 +48,6 @@ public class InputManager : MonoBehaviour
         m_isPause = value.isPressed;
     }
 
-    static public bool onShootRelased()
-    {
-
-        return m_playerInput.actions.FindAction("Shooting").WasReleasedThisFrame();
-    }
-
-    static public bool onShootRPressed()
-    {
-        return m_playerInput.actions.FindAction("Shooting").WasPressedThisFrame();
-    }
-
-    static public bool onShoot()
-    {
-        if (!m_shooting2)
-        {
-            m_shooting2= m_playerInput.actions.FindAction("Shooting").WasPressedThisFrame();
-        }
-        else if (m_shooting2 && m_playerInput.actions.FindAction("Shooting").WasReleasedThisFrame())
-        {
-            m_shooting2 = false;
-        }
-        return m_shooting2;
-    }
     void Update()
     {
         Pausing();

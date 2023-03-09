@@ -17,7 +17,7 @@ public class BulletSpawner : MonoBehaviour
     {
         //if (m_input.m_shooting)
         m_firerate += Time.deltaTime;
-        m_input.m_shooting = InputManager.onShoot();
+        //m_input.m_shooting = InputManager.onShoot();
         if (m_input.m_shooting && m_firerate >= 0.10f)
         {
             Shoot();
