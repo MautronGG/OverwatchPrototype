@@ -15,7 +15,7 @@ public class ReloadScene : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene(1);
+            other.transform.position = new Vector3(0.582f, 1.076f, 36.982f);
         }
     }
 }

@@ -6,14 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-    InputManager input;
-    private void Awake()
-    {
-        if (!GameObject.Find("Menu"))
-        {
-            input = GameObject.Find("SysManager").GetComponent<InputManager>();
-        }
-    }
+    public InputManager input;
     public void Resume()
     {
         Time.timeScale = 1f;
